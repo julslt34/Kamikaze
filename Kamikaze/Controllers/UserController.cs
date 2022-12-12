@@ -16,16 +16,17 @@ namespace Kamikaze.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-            private readonly IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-            public UserController(IUserRepository userRepository)
+        //public IUserRepository _userRepository;
+        public UserController(IUserRepository userRepository)
             {
             _userRepository = userRepository;
             }
 
         // GET: api/<UserController>
         [HttpGet]
-            public IActionResult Get()
+            public IActionResult GetAllUsers()
             {
                 return Ok(_userRepository.GetAllUsers());
             }
@@ -52,6 +53,17 @@ namespace Kamikaze.Controllers
                 return NotFound();
             }
             return Ok(user);
+        }
+
+
+        [HttpPost]
+        public IActionResult Post(User user)
+        {
+            _userRepository.Add(user);
+            return CreatedAtAction(
+                "GetUserByEmail",
+                new { email = user.Email },
+                user);
         }
 
 

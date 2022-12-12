@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
@@ -18,7 +18,7 @@ namespace Kamikaze.Models
         public string YearEstablished { get; set; }
 
 
-        public List<User> Users { get; set; }
+        //public List<User> Users { get; set; }
 
 
 
