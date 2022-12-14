@@ -8,9 +8,11 @@ namespace Kamikaze.Repositories
     public interface IDestinationRepository
     {
       List<Destination> GetAllDestinations();
-       Destination GetDestinationById(int id);
+        Destination GetDestinationById(int id);
 
-     List<Destination> GetDestinationByCategory(int CategoryId);
+        //Destination GetDestinationByCategory(int CategoryId);
+
+        List<Destination> GetDestinationByCategory(int CategoryId);
 
 
 

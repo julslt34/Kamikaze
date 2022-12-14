@@ -23,7 +23,7 @@ const DestinationList = () => {
     {/* <Link to={`/createPost`}>
       New Post
     </Link> */}
-    <h1>All Desetinations</h1>
+    <h1>All Destinations</h1>
     <div className="container">
       <div className="row justify-content-center">
         <div className="cards-column">

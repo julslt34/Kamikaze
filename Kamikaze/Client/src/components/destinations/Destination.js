@@ -7,17 +7,21 @@ export const Destination = ({ destination }) => {
   return (
     <Card className="m-4">
       <CardBody>
-        <Link to={`/destinations/${destination.id}`}>
+        {/* <Link to={`/destinations/${destination.id}`}>
             <strong>{destination.DestinationName}</strong>
-        </Link>
-        {/* <Link to={`/posts/${post.id}`}>
-            <p>Author: {destination.userProfile.displayName}</p>
-        {/* </Link> */}
-        {/* <p>Category: {destination.category.name}</p> */}
-        
-        {/* {post?.comments.length ? post?.comments?.map(comment => 
-            <p key={comment?.id} className="text-left px-2">Comment: {comment?.message}</p>) : ""} */}
-       {/* */} 
+        </Link> */}
+
+
+         <Link to={`/destination/${destination.id}`}>
+            <p>Where:        {destination.destinationName}</p>            
+         </Link> 
+
+          <img src= {destination.imageLocation}/>
+         <p>Description: {destination.description}</p> 
+{/*         
+        {destination?.comments.length ? post?.comments?.map(comment => 
+            <p key={comment?.id} className="text-left px-2">Comment: {comment?.message}</p>) : ""}  */}
+       
         </CardBody>
 
     </Card>

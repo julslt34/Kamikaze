@@ -13,8 +13,7 @@ export default function ApplicationViews() {
  return(
       <Routes>
         <Route path="/" element={<Hello />} />
-        {/* <Route path="/categories" element={<CategoryList />} /> */}
-        
+      
         <Route path="/users" element={<UserList />} />
         <Route path="/user/:id" element={<UserDetail />} /> 
         <Route path="/categories" element={<CategoryList />} />

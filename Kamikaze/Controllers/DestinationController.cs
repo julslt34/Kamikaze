@@ -29,6 +29,16 @@ namespace Kamikaze.Controllers
             return Ok(_destinationRepository.GetAllDestinations());
         }
 
+
+        [HttpGet("GetDestinationByCategory")]
+        public IActionResult GetDestinationByCategory(int CategoryId)
+        {
+            var destination = _destinationRepository.GetDestinationByCategory(CategoryId);
+
+            return Ok(destination);
+        }
+
+
         //GET api/<DestinationController>/5
         [HttpGet("{id}")]
         public IActionResult GetDestinationById(int id)

@@ -46,7 +46,8 @@ namespace Kamikaze.Repositories
                                 Name = reader.GetString(reader.GetOrdinal("CategoryName"))
                             },
                         };
-                       
+                        //destination.Category.Name = reader.GetString(reader.GetOrdinal("CategoryName"));
+
                         destinations.Add(destination);
                     }
 
@@ -137,7 +138,7 @@ namespace Kamikaze.Repositories
                             },
                         };
 
-                        //destination.Category.Name = reader.GetString(reader.GetOrdinal("CategoryName"));
+                        destination.Category.Name = reader.GetString(reader.GetOrdinal("CategoryName"));
 
                         destinations.Add(destination);
                     }
