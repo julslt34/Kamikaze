@@ -42,15 +42,14 @@ namespace Kamikaze.Controllers
         }
 
 
+        //POST api/<TripPlanController>
+        [HttpPost]
+        public IActionResult Create(TripPlan tripPlan)
+        {
+            _tripPlanRepository.Insert(tripPlan);
+            return CreatedAtAction("Get", new { id = tripPlan.Id }, tripPlan);
+        }
 
-
-        // POST api/<CategoryController>
-        //[HttpPost]
-        //public IActionResult Add(Category category)
-        //{
-        //    _categoryRepository.Add(category);
-        //    return CreatedAtAction("Get", new { id = category.Id }, category);
-        //}
 
         // PUT api/<CategoryController>/5
         //[HttpPut("{id}")]

@@ -83,41 +83,64 @@ namespace Kamikaze.Repositories
         }
 
         public User GetUserById(int id)
-{
-        using (var conn = Connection)
-      {
-        conn.Open();
-        using (var cmd = conn.CreateCommand())
         {
-            cmd.CommandText = @"
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
                           SELECT Id, UserName, Email, YearEstablished  
                             FROM [User]
                            WHERE Id = @Id";
 
-            DbUtils.AddParameter(cmd, "@Id", id);
+                    DbUtils.AddParameter(cmd, "@Id", id);
 
-            var reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();
 
-            User singleUser = null;
-            if (reader.Read())
-            {
-                singleUser = new User()
-                {
-                    Id = id,
-                    UserName = DbUtils.GetString(reader, "UserName"),
-                    Email = DbUtils.GetString(reader, "Email"),
-                    YearEstablished = DbUtils.GetString(reader, "YearEstablished")
-                };
+                    User user = null;
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            Id = id,
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            YearEstablished = DbUtils.GetString(reader, "YearEstablished")
+                        };
+                    }
+
+                    reader.Close();
+
+                    return user;
+                }
             }
-
-            reader.Close();
-
-            return singleUser;
-        }
-    } 
         
+
+
         }
-   }
+
+        public void Add(User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO User ( UserName, Email, YearEstablished)
+                        OUTPUT INSERTED.ID
+                        VALUES (@UserName, @Email, @YearEstablished)";
+
+                    DbUtils.AddParameter(cmd, "@UserName", user.UserName);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+                    DbUtils.AddParameter(cmd, "@YearEstablished", user.YearEstablished);
+
+                    user.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+    }
 }
     
 

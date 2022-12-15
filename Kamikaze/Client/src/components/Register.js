@@ -16,8 +16,8 @@ export default function Register({setIsLoggedIn}) {
     if (password && password !== confirmPassword) {
       alert("Passwords don't match. Do better.");
     } else {
-      const userProfile = { UserName, email };
-      register(userProfile, password)
+      const user = { UserName, email };
+      register(user, password)
         .then(() => {
           setIsLoggedIn(true)
           navigate('/')

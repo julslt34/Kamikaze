@@ -50,6 +50,13 @@ namespace Kamikaze
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Kamikaze v1"));
             }
 
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin();
+                options.AllowAnyMethod();
+                options.AllowAnyHeader();
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

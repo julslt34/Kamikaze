@@ -7,7 +7,7 @@
 //     const [categories, setCategories] = useState([]);
 
    
-//     const navigate = useNavigate();
+//    const navigate = useNavigate();
 
 //     const getAllCategories = () => {
 //         getAllCategories().then( all => setCategories(all))
@@ -16,13 +16,13 @@
 //         getAllCategories();
 //     }, []);
 
-//     const handleDeleteClick = (id) => {
-//       getById(id).then((e) => {navigate(`/deleteCategory/${id}`)})
-//   }
+// //     const handleDeleteClick = (id) => {
+// //       getById(id).then((e) => {navigate(`/deleteCategory/${id}`)})
+// //   }
 
-//     const handleEditClick = (id) => {
-//       getById(id).then((e) => {navigate(`/editCategory/${id}`)})
-//   }
+// //     const handleEditClick = (id) => {
+// //       getById(id).then((e) => {navigate(`/editCategory/${id}`)})
+// //   }
 
 
     
@@ -31,7 +31,7 @@
 //         <div className="row justify-content-center" style={{display: 'flex', flexDirection: 'column'}}>
 //           <h4 style={{marginTop: '20px', marginBottom: '15px'}}>Categories</h4>
          
-         
+// {/*          
 //           <button onClick={(e) => {
 //             navigate('/createCategory')
 //           }} style={{width: '120px', marginBottom: '25px'}}
@@ -50,7 +50,7 @@
 //                     ))}
 
 //         </div>
-     
+//       */}
      
 //       </div>
 //     </div>

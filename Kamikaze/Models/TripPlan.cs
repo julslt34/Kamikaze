@@ -12,8 +12,12 @@ namespace Kamikaze.Models
         [Required]
         public int UserId { get; set; }
 
+        public User User { get; set; }
+
         [Required]
         public int DestinationId { get; set; }
+
+        public Destination Destination { get; set; }
 
         public string Notes { get; set; }
 

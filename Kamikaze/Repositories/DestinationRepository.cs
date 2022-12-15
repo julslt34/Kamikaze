@@ -46,7 +46,8 @@ namespace Kamikaze.Repositories
                                 Name = reader.GetString(reader.GetOrdinal("CategoryName"))
                             },
                         };
-                       
+                        //destination.Category.Name = reader.GetString(reader.GetOrdinal("CategoryName"));
+
                         destinations.Add(destination);
                     }
 
@@ -112,10 +113,12 @@ namespace Kamikaze.Repositories
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT d.Id, d.DestinationName, d.CategoryId, d.ImageLocation, d.Description, c.[Name] as CategoryName                
-                                        FROM Destination d
-                                        JOIN Category c on d.CategoryId = c.Id";
-                    
+                    cmd.CommandText = @"SELECT d.Id, d.DestinationName, d.CategoryId, d.ImageLocation, d.Description, c.Id, c.[Name] as CategoryName  
+
+                    FROM Destination d
+                   JOIN Category c on d.CategoryId = c.Id";
+
+
                     cmd.Parameters.AddWithValue("id", CategoryId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -137,7 +140,7 @@ namespace Kamikaze.Repositories
                             },
                         };
 
-                        //destination.Category.Name = reader.GetString(reader.GetOrdinal("CategoryName"));
+                        destination.Category.Name = reader.GetString(reader.GetOrdinal("CategoryName"));
 
                         destinations.Add(destination);
                     }
