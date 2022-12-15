@@ -7,6 +7,7 @@ import Hello from "./Hello";
 import UserDetail from "./user/UserDetail";
  import UserList from "./user/UserList";
  import DestinationList from "./destinations/DestinationList";
+ import TripPlanList from "./tripPlans/TripPlanList";
 
 export default function ApplicationViews() {
 
@@ -18,6 +19,7 @@ export default function ApplicationViews() {
         <Route path="/user/:id" element={<UserDetail />} /> 
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/destinations" element={<DestinationList />} />
+        <Route path="/tripPlans" element={<TripPlanList />} />
       </Routes>
    );
  
