@@ -84,7 +84,7 @@ using System;
                 SELECT t.Id, t.UserId, t.DestinationId, t.Notes, t.TripDate, d.DestinationName, d.CategoryId, d.Description, d.ImageLocation, u.UserName, u.Email, u.YearEstablished            
                                         FROM TripPlan t
                                         LEFT JOIN Destination d on t.DestinationId = d.Id
-                                        LEFT JOIN [User] u on t.UserId = u.Id";
+                                        LEFT JOIN [User] u on t.UserId = u.Id where t.Id = @id";
 
                     DbUtils.AddParameter(cmd, "@id", id);
 

@@ -23,11 +23,11 @@ const navigate = useNavigate();
   }, []);
 
   const handleDeleteClick = (id) => {
-    getTripPlan(id).then((c) => { navigate(`/deleteCategory/${id}`) })
+    getTripPlan(id).then((c) => { navigate(`/deleteTripPlan/${id}`) })
 }
 
 const handleEditClick = (id) => {
-  getTripPlan(id).then((e) => { navigate(`/editCategory/${id}`) })
+  getTripPlan(id).then((e) => { navigate(`/editTripPlan/${id}`) })
 }
 
 

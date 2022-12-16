@@ -37,7 +37,7 @@ export const addTripPlan = (singleTripPlan) => {
 
 
 export const editTripPlan = (tripPlan) => {
-  return fetch(`${apiUrl}/TripPlan/${getTripPlan.id}`, {
+  return fetch(`${apiUrl}/TripPlan/${tripPlan.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

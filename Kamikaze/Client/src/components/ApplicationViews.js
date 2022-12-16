@@ -9,7 +9,7 @@ import UserDetail from "./user/UserDetail";
  import DestinationList from "./destinations/DestinationList";
  import TripPlanList from "./tripPlans/TripPlanList";
  import TripPlanDelete from "./tripPlans/TripPlanDelete";
-//  import { TripPlanEdit } from "./tripPlans/TripPlanEdit";
+  import TripPlanEdit from "./tripPlans/TripPlanEdit";
 
 
 export default function ApplicationViews() {
@@ -28,7 +28,9 @@ export default function ApplicationViews() {
          {/* <Route path ="/post/details/:postId" element={<PostDetails />} /> */}
          
         <Route path="/tripPlans" element={<TripPlanList />} />
-        {/* <Route path="/editTripPlan/:id" element={ <TripPlanEdit /> } />  */}
+        <Route path="/editTripPlan/:id" element={ <TripPlanEdit /> } /> 
+
+       
         {/* <Route path="tripPlans/:id/addComment" element={<CommentNew />} />
     </Routes> */}
       </Routes>

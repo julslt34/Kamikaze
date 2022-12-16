@@ -39,7 +39,7 @@ const TripPlanDelete = () => {
 
     return (
         <div style={{display:'flex', flexDirection: 'column', letterSpacing: '.5px', alignItems: 'center', margin: '45px', height: '30px', width: '500px', justifyContent: 'space-between'}}>
-            <h5 style={{marginBottom: '45px'}}>Are you sure you wish to delete the category?</h5>
+            <h5 style={{marginBottom: '45px'}}>Are you sure you wish to delete this Trip Plan?</h5>
             <div style={{display: 'flex'}}>
             <h5 style={{ marginRight: '30px' }}>{chosenTripPlan.id}</h5>
             <button style={{marginRight: '10px'}} onClick={(c) => {

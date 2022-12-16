@@ -6,74 +6,79 @@ import { getTripPlan, editTripPlan } from "../../managers/TripPlanManager";
 
 
 
-const TripPlanEdit = () => {
-    const [tripPlan, update] = useState({
-        Notes: "",
-        TripDate: ""
-    });
+
+const TripPlanEdit = () => {   
+    const [tripPlan, setTripPlan] = useState({});
 
     const navigate = useNavigate();
-    const { id } = useParams();  
-    
-    // const localUser = localStorage.getItem("user")
-    // const userObject = JSON.parse(localUser)
+    const {id} = useParams();
 
-    // const [categories, setCategories] = useState([])
 
-    // useEffect(() => {
-    //     getAllCategories().then(setCategories);
-    // }, []);
 
-    useEffect(() => {
-        getTripPlan(id).then(update)        
-    }, [])
-    
+    useEffect(
+    () => {
+        getTripPlan(id).then((t) => {setTripPlan(t)})        
+    },
+    []
+    )    
 
-     function Edit(e) {
+    console.log(tripPlan);
 
-        e.preventDefault();
-
-        const editedTripPlan = {
+    const saveEdit = (e) => {
+        e.preventDefault()
+        const newTripPlan = {
             id: tripPlan.id,                  
             userId: tripPlan.userId,            
             destinationId: tripPlan.destinationId,
             notes: tripPlan.notes,
             tripDate: tripPlan.tripDate
         }
-
-        editTripPlan(editedTripPlan).then(() => {
-            console.log("here?");
-            navigate(`/tripPlans/${editedTripPlan.id}`)});        
+        console.log(newTripPlan)
+        editTripPlan(newTripPlan).then((e) => {
+            navigate('/tripPlans')
+        })
     }
 
-    const Cancel = () => {
-        navigate(`/TripPLans/${id}`)
+    const handleCancel = (e) => {
+        navigate('/tripPlans')
     }
 
     return (
-        <form className="tripPlanForm">
-            <h2 className="tripPlanForm__Title">Edit Trip Plan</h2>
+        <div style={{display:'flex', flexDirection: 'column', letterSpacing: '.5px', alignItems: 'center', margin: '45px', height: '30px', width: '500px', justifyContent: 'space-between'}}>
+            <h5 style={{marginBottom: '45px'}}>Edit Trip Plan</h5>
+            <div style={{display: 'flex'}}>
             <fieldset>
-                <div className="form-group">
-                    <label htmlFor="Notes">Notes:</label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="TripPlan notes"
-                        value={tripPLan.notes}
-                        onChange={(changeEvent) => {
-                            const copy = {...tripPlan}
-                            copy.notes = changeEvent.target.value
-                            update(copy)
-                        }} />
-                </div>
-            </fieldset>
-           
-                      
-            <button className="btn btn-primary" style={{marginRight: '10px'}} onClick={ e => Edit(e) }>Edit</button>
-            <button onClick={ e => Cancel() }>Cancel</button>
-        </form>
+            <input
+             style={{marginRight: '10px'}}
+             type="text" name="title"  value={tripPlan.notes}
+              onChange={(e) => {
+                const copy = {...tripPlan}
+                copy.notes = e.target.value
+                setTripPlan(copy);}
+              }
+            />
+          </fieldset>
+          <fieldset>
+            <input
+             style={{marginRight: '10px'}}
+              type="text"
+              placeholder={tripPlan.tripDate}
+              value={tripPlan.tripDate}
+              onChange={(e) => {
+                const copy = {...tripPlan}
+                copy.tripDate = e.target.value
+                setTripPlan(copy);}
+              }
+            />
+          </fieldset>
+            <button style={{marginRight: '10px'}} onClick={(e) => {
+                saveEdit(e)
+            }}>Save</button>
+            <button onClick={(e) => {
+                handleCancel()
+            }}>Cancel</button>
+            </div>
+        </div>
     )
 }
 
