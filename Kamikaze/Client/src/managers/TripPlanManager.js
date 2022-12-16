@@ -1,3 +1,4 @@
+
 const apiUrl = "https://localhost:5001/api";
 
 export const getAllTripPlans = () => {
@@ -16,7 +17,41 @@ export const getAllTripPlans = () => {
         .then((res) => res.json());
 };
 
+
+export const getTripPlan = (id) => {
+  let tripPlan = fetch(`https://localhost:5001/api/TripPlan/${id}`)
+      .then((res) => res.json());
+return tripPlan};
+
+
+
+export const addTripPlan = (singleTripPlan) => {
+  return fetch(`${apiUrl}/TripPlan`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(singleTripPlan)
+  });
+};
+
+
+export const editTripPlan = (tripPlan) => {
+  return fetch(`${apiUrl}/TripPlan/${getTripPlan.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tripPlan),
+    });
+};
   
+export const deleteTripPlan = (id) => {
+  return fetch(`${apiUrl}/TripPlan/${id}`, {
+      method: "DELETE"
+    })
+};
+
 
 
 

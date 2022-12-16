@@ -164,11 +164,12 @@ using System;
                                           TripDate = @TripDate
                                     WHERE Id = @id";
 
+                    cmd.Parameters.AddWithValue("@id", tripPlan.Id);
                     cmd.Parameters.AddWithValue("@UserId", tripPlan.UserId);
                     cmd.Parameters.AddWithValue("@DestinationId", tripPlan.DestinationId);                    
                     cmd.Parameters.AddWithValue("@Notes", tripPlan.Notes);
                     cmd.Parameters.AddWithValue("@TripDate", tripPlan.TripDate);
-                    cmd.Parameters.AddWithValue("@id", tripPlan.Id);
+                    
 
                     cmd.ExecuteNonQuery();
                 }

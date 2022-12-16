@@ -12,12 +12,14 @@ export const Destination = ({ destination }) => {
         </Link> */}
 
 
-         <Link to={`/destination/${destination.id}`}>
+         <Link to={`/destinations/${destination.id}`}>
             <p>Where:        {destination.destinationName}</p>            
          </Link> 
 
           <img src= {destination.imageLocation}/>
          <p>Description: {destination.description}</p> 
+
+         
 {/*         
         {destination?.comments.length ? post?.comments?.map(comment => 
             <p key={comment?.id} className="text-left px-2">Comment: {comment?.message}</p>) : ""}  */}
