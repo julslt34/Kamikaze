@@ -84,7 +84,7 @@ using System;
                 SELECT t.Id, t.UserId, t.DestinationId, t.Notes, t.TripDate, d.DestinationName, d.CategoryId, d.Description, d.ImageLocation, u.UserName, u.Email, u.YearEstablished            
                                         FROM TripPlan t
                                         LEFT JOIN Destination d on t.DestinationId = d.Id
-                                        LEFT JOIN [User] u on t.UserId = u.Id";
+                                        LEFT JOIN [User] u on t.UserId = u.Id where t.Id = @id";
 
                     DbUtils.AddParameter(cmd, "@id", id);
 
@@ -126,6 +126,10 @@ using System;
         }
 
 
+
+
+
+
         public void Insert(TripPlan tripPlan)
         {
             using (var conn = Connection)
@@ -164,11 +168,12 @@ using System;
                                           TripDate = @TripDate
                                     WHERE Id = @id";
 
+                    cmd.Parameters.AddWithValue("@id", tripPlan.Id);
                     cmd.Parameters.AddWithValue("@UserId", tripPlan.UserId);
                     cmd.Parameters.AddWithValue("@DestinationId", tripPlan.DestinationId);                    
                     cmd.Parameters.AddWithValue("@Notes", tripPlan.Notes);
                     cmd.Parameters.AddWithValue("@TripDate", tripPlan.TripDate);
-                    cmd.Parameters.AddWithValue("@id", tripPlan.Id);
+                    
 
                     cmd.ExecuteNonQuery();
                 }
@@ -190,6 +195,7 @@ using System;
                 }
             }
         }
+
 
     }
 

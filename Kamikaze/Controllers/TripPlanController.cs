@@ -51,13 +51,27 @@ namespace Kamikaze.Controllers
         }
 
 
-        // PUT api/<CategoryController>/5
-        //[HttpPut("{id}")]
-        //public IActionResult Update(int id, Category category)
-        //{
-        //    _categoryRepository.Update(category);
-        //    return Ok(category);
-        //}
+        //PUT api/<TripPlanController>/5
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, TripPlan tripPlan)
+        {
+            if (id != tripPlan.Id)
+            {
+                return BadRequest();
+            }
+            _tripPlanRepository.Update(tripPlan);
+            return NoContent();
+        }
+
+        // DELETE api/<TripPlanController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _tripPlanRepository.Delete(id);
+            return NoContent();
+        }
+
+
 
         // DELETE api/<CategoryController>/5
         //[HttpDelete("{id}")]

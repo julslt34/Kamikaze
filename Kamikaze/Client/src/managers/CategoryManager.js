@@ -1,7 +1,7 @@
-const baseURL = `https://localhost:5001/api/Category`;
+const apiUrl = "https://localhost:5001/api";
 
 export const getAllCategories = () => {
-    return fetch(`${baseURL}`)
+    return fetch(`${apiUrl}/Category`)
     .then((res)=> res.json())
 };
 
@@ -9,6 +9,28 @@ export const getAllCategories = () => {
 //     return fetch(`${baseURL}/${id}`)
 //         .then((res) => res.json())
 // }
+
+
+
+
+
+
+
+// const apiUrl = "https://localhost:5001/api/";
+
+// export const getAllCategories = () => {
+//   return fetch(`${apiUrl}/Category`)
+//     .then((res) => res.json())
+// };
+
+
+
+
+// export const getById = (id) => {
+//     return fetch(`${apiUrl}/${id}`)
+//         .then((res) => res.json())
+// }
+
 
 
 // export const addCategory = (singleCategory) =>{

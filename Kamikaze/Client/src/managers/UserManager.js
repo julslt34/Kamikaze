@@ -44,6 +44,13 @@ const apiUrl = "https://localhost:5001";
       .then((res) => res.json());
   };
 
+  export const getCurrentUser = () => {
+    const currentUser = localStorage.getItem("user");
+
+    return JSON.parse(currentUser);  //JSON.parse()  the local user object coming back from API to use properties of that object
+  };
+
+
 
   // return (
   //   <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register,  }}>
